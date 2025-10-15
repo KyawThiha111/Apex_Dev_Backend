@@ -8,7 +8,7 @@ const router = express.Router();
 // SIGN UP
 exports.SignUp = async(req,res)=>{
     try {
-    const { name, studentid, email, password } = req.body;
+    const { name, email, password } = req.body;
 
     const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ message: "User already exists" });
@@ -22,7 +22,7 @@ exports.SignUp = async(req,res)=>{
       password: hashedPassword,
     });
 
-    const token = jwt.sign({ id: user._id,studentid:user.studentid,studentname:user.name,email:user.email }, process.env.JWT_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign({ id: user._id,studentname:user.name,email:user.email }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
     res.status(201).json({
       success:true,
