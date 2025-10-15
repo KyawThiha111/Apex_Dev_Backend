@@ -10,7 +10,7 @@ const AuthRouter = require("./Routes/AUTH/auth.js")
 const CSProgressRouter = require("./Routes/ComputerScience/progress.js")
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:8080', // React app URL or any allowed origin
+  origin: 'https://study-mate-ai-beta.vercel.app', // React app URL or any allowed origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // allowed HTTP methods
   credentials: true, // if you need to send cookies/auth headers
 }));
